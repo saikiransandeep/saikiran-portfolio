@@ -29,7 +29,7 @@ const HeroSection = () => {
             <div className="text-gray-400 mb-8 space-y-4 max-w-lg">
               <p className="text-lg leading-relaxed">
                 Passionate about crafting innovative solutions through code. Currently mastering 
-                <span className="text-blue-400 font-medium"> full-stack development</span> while exploring the 
+                <span className="text-blue-400 font-medium"> React, Node.js, and Firebase</span> while exploring the 
                 fascinating world of <span className="text-purple-400 font-medium">artificial intelligence</span>.
               </p>
               
@@ -57,7 +57,7 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+                className="border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
