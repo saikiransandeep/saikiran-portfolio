@@ -44,7 +44,7 @@ const AboutSection = () => {
             
             <p className="text-lg text-gray-300 leading-relaxed">
               With expertise in <span className="text-blue-400 font-semibold">Java, Python, and C</span>, 
-              along with modern web technologies like <span className="text-blue-400 font-semibold">React, Node.js, and Firebase</span>, 
+              along with modern web technologies like <span className="text-green-400 font-semibold">React, Node.js, and Firebase</span>, 
               I bring ideas to life through code.
             </p>
             
