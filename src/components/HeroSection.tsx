@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Download, ExternalLink, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -57,7 +56,7 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+                className="bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:text-blue-800 hover:border-blue-300 px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
               >
                 <Download className="mr-2 h-5 w-5" />
                 Download Resume
