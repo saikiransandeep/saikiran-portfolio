@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -19,56 +19,68 @@ const Header = () => {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Certifications', href: '#certifications' },
+    { name: 'Certificates', href: '#certifications' },
     { name: 'Education', href: '#education' },
     { name: 'Contact', href: '#contact' }
   ];
 
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       scrolled ? 'bg-gray-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
     }`}>
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
           <div className="text-2xl font-bold text-white">
-            SK<span className="text-blue-400">.</span>
-          </div>
-          
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-gray-300 hover:text-blue-400 transition-colors duration-200"
-              >
-                {item.name}
-              </a>
-            ))}
+            Sai <span className="text-blue-400">Kiran</span>
           </div>
 
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-1">
+            {navItems.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => scrollToSection(item.href)}
+                className="relative px-4 py-2 text-gray-300 font-medium transition-all duration-300 hover:text-white group"
+              >
+                {item.name}
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+              </button>
+            ))}
+          </nav>
+
+          {/* Mobile menu button */}
           <button
             className="md:hidden text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setIsOpen(!isOpen)}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
+        {/* Mobile Navigation */}
+        {isOpen && (
+          <div className="md:hidden bg-gray-900/95 backdrop-blur-sm rounded-lg mt-2 py-4">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.name}
-                href={item.href}
-                className="block py-2 text-gray-300 hover:text-blue-400 transition-colors duration-200"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => scrollToSection(item.href)}
+                className="block w-full text-left px-6 py-3 text-gray-300 font-medium transition-all duration-300 hover:text-white hover:bg-gray-800/50"
               >
                 {item.name}
-              </a>
+              </button>
             ))}
           </div>
         )}
-      </nav>
+      </div>
     </header>
   );
 };
