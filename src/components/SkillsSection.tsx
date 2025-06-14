@@ -7,7 +7,7 @@ const SkillsSection = () => {
     {
       title: "Programming Languages",
       icon: <Code2 className="h-8 w-8" />,
-      skills: ["Java", "Python", "C", "JavaScript", "TypeScript", "C++"],
+      skills: ["Java", "Python", "JavaScript", "TypeScript"],
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-500/10",
       borderColor: "border-blue-500/30"
@@ -15,7 +15,7 @@ const SkillsSection = () => {
     {
       title: "Frontend Technologies",
       icon: <Globe className="h-8 w-8" />,
-      skills: ["HTML5", "CSS3", "React", "Tailwind CSS", "Bootstrap", "SASS"],
+      skills: ["HTML5", "CSS3", "React", "Tailwind CSS"],
       color: "from-green-500 to-green-600",
       bgColor: "bg-green-500/10",
       borderColor: "border-green-500/30"
@@ -23,7 +23,7 @@ const SkillsSection = () => {
     {
       title: "Backend & APIs",
       icon: <Server className="h-8 w-8" />,
-      skills: ["Node.js", "Express.js", "REST APIs", "Spring Boot", "JWT", "GraphQL"],
+      skills: ["Node.js", "Spring Boot", "JWT"],
       color: "from-purple-500 to-purple-600",
       bgColor: "bg-purple-500/10",
       borderColor: "border-purple-500/30"
@@ -31,7 +31,7 @@ const SkillsSection = () => {
     {
       title: "Databases",
       icon: <Database className="h-8 w-8" />,
-      skills: ["MySQL", "MongoDB", "PostgreSQL", "Firebase", "Redis", "SQLite"],
+      skills: ["MongoDB", "PostgreSQL", "SQLite"],
       color: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-500/10",
       borderColor: "border-orange-500/30"
@@ -97,7 +97,7 @@ const SkillsSection = () => {
         {/* Bottom stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           <div className="text-center p-6 rounded-2xl bg-gray-800/30 border border-gray-700/50 backdrop-blur-sm">
-            <div className="text-3xl font-bold text-blue-400 mb-2">24+</div>
+            <div className="text-3xl font-bold text-blue-400 mb-2">14</div>
             <div className="text-gray-400 text-sm">Total Skills</div>
           </div>
           <div className="text-center p-6 rounded-2xl bg-gray-800/30 border border-gray-700/50 backdrop-blur-sm">
