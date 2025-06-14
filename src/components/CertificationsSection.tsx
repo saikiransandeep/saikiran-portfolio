@@ -61,7 +61,7 @@ const CertificationsSection = () => {
               <Button 
                 variant="outline" 
                 size="sm"
-                className="bg-gradient-to-r from-violet-500/10 to-purple-500/10 border-violet-400/50 text-violet-400 hover:bg-gradient-to-r hover:from-violet-500 hover:to-purple-500 hover:text-white hover:border-violet-400 hover:shadow-lg hover:shadow-violet-500/25 transition-all duration-300 group"
+                className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100 hover:text-green-800 hover:border-green-300 transition-all duration-300 group"
               >
                 <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                 Download Certificate

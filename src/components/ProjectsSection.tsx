@@ -83,7 +83,7 @@ const ProjectsSection = () => {
             >
               <CardContent className="p-0">
                 {/* Project Header with Gradient */}
-                <div className={`relative h-24 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
+                <div className={`relative h-20 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-500"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   
@@ -136,7 +136,7 @@ const ProjectsSection = () => {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      className="flex-1 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border-emerald-400/50 text-emerald-400 hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-500 hover:text-white hover:border-emerald-400 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 group/btn"
+                      className="flex-1 bg-slate-100 border-slate-300 text-slate-700 hover:bg-slate-200 hover:text-slate-800 hover:border-slate-400 transition-all duration-300 group/btn"
                     >
                       <Github className="mr-1 h-3 w-3 group-hover/btn:rotate-12 transition-transform duration-300" />
                       Code
@@ -144,7 +144,7 @@ const ProjectsSection = () => {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      className="flex-1 bg-gradient-to-r from-orange-500/10 to-red-500/10 border-orange-400/50 text-orange-400 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500 hover:text-white hover:border-orange-400 hover:shadow-lg hover:shadow-orange-500/20 transition-all duration-300 group/btn"
+                      className="flex-1 bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:text-blue-800 hover:border-blue-300 transition-all duration-300 group/btn"
                     >
                       <ExternalLink className="mr-1 h-3 w-3 group-hover/btn:rotate-12 transition-transform duration-300" />
                       Demo
@@ -164,13 +164,13 @@ const ProjectsSection = () => {
               Explore more projects on GitHub or get in touch to discuss potential collaborations.
             </p>
             <div className="flex gap-3 justify-center">
-              <Button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:bg-gradient-to-r hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 text-sm">
+              <Button className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-gray-900 px-6 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 text-sm">
                 <Github className="mr-2 h-4 w-4" />
                 View All Projects
               </Button>
               <Button 
                 variant="outline" 
-                className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border-cyan-400/50 text-cyan-400 hover:bg-gradient-to-r hover:from-cyan-500 hover:to-blue-500 hover:text-white hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/20 px-6 py-2 rounded-lg font-medium transition-all duration-300 text-sm"
+                className="bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:text-blue-800 hover:border-blue-300 px-6 py-2 rounded-lg font-medium transition-all duration-300 text-sm"
               >
                 Get In Touch
               </Button>
