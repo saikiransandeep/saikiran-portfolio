@@ -45,8 +45,6 @@ This portfolio isn't static—it's intelligently crafted using prompt engineerin
 
 > You can check the live site here: [🌍 Visit My Portfolio](https://your-portfolio-link.vercel.app)
 
-![Screenshot of Portfolio](assets/portfolio-preview.png)
-
 ## 🔮 Future Enhancements
 
 - ✅ React Migration for a more dynamic UI

@@ -102,18 +102,18 @@ const HeroSection = () => {
                 </div>
               </div>
 
-              {/* Right Column - Photo Space */}
-              <div className="flex justify-center items-center order-first lg:order-last animate-scale-in">
-                <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-2xl bg-gradient-to-br from-gray-800/50 to-gray-700/50 border border-gray-600/30 flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:scale-105">
-                  <div className="text-center text-gray-400">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-500/20 flex items-center justify-center">
-                      <span className="text-2xl">📸</span>
-                    </div>
-                    <p className="text-sm">Your Photo Here</p>
-                    <p className="text-xs text-gray-500 mt-1">Professional Portrait</p>
+           {/* Right Column - Photo Space */}
+            {/* <div className="flex justify-center items-center order-first lg:order-last animate-scale-in">
+              <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-2xl bg-gradient-to-br from-gray-800/50 to-gray-700/50 border border-gray-600/30 flex items-center justify-center backdrop-blur-sm transition-all duration-300 hover:scale-105">
+                <div className="text-center text-gray-400">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-500/20 flex items-center justify-center">
+                    <span className="text-2xl"></span>
                   </div>
+                  <p className="text-sm">Your Photo Here</p>
+                  <p className="text-xs text-gray-500 mt-1">Professional Portrait</p>
                 </div>
               </div>
+            </div> */}
             </div>
           </div>
         </div>
