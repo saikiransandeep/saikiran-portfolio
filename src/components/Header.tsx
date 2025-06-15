@@ -37,10 +37,22 @@ const Header = () => {
       scrolled ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm border-b border-gray-200/50 dark:border-gray-700/50' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-10 sm:h-12 md:h-16">
+        <div className="flex items-center justify-between h-12 sm:h-14 md:h-16">
           {/* Logo */}
-          <div className="text-base sm:text-lg md:text-2xl font-bold text-gray-900 dark:text-white">
+          <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
             SK<span className="text-blue-600">.</span>
+          </div>
+
+          {/* Mobile Header Content - Only visible on mobile */}
+          <div className="block md:hidden flex-1 mx-4">
+            <div className="text-center">
+              <h1 className="text-sm font-semibold text-gray-900 dark:text-white">
+                Sai Kiran
+              </h1>
+              <p className="text-xs text-gray-600 dark:text-gray-400">
+                CS Student & Developer
+              </p>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
