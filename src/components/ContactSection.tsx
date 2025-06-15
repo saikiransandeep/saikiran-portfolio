@@ -54,25 +54,25 @@ const ContactSection = () => {
     {
       name: 'LinkedIn',
       icon: <Linkedin className="h-6 w-6" />,
-      url: 'https://www.linkedin.com/in/sai-kiran-your-profile', // Replace with your actual LinkedIn
+      url: 'https://linkedin.com/in/sai-kiran-383474327',
       color: 'hover:text-blue-500'
     },
     {
       name: 'GitHub',
       icon: <Github className="h-6 w-6" />,
-      url: 'https://github.com/yourusername', // Replace with your actual GitHub
+      url: 'https://github.com/saikiransandeep',
       color: 'hover:text-gray-400'
     },
     {
       name: 'LeetCode',
       icon: <Code className="h-6 w-6" />,
-      url: 'https://leetcode.com/yourusername', // Replace with your actual LeetCode
+      url: 'https://leetcode.com/u/saikiransandeep',
       color: 'hover:text-yellow-500'
     },
     {
       name: 'GeeksforGeeks',
       icon: <Users className="h-6 w-6" />,
-      url: 'https://auth.geeksforgeeks.org/user/yourusername', // Replace with your actual GFG
+      url: 'https://geeksforgeeks.org/user/saikirans8k6c',
       color: 'hover:text-green-500'
     }
   ];
