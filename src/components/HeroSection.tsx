@@ -47,20 +47,36 @@ const HeroSection = () => {
                 </h2>
                 
                 <div className="text-gray-400 space-y-4 max-w-2xl mx-auto lg:mx-0">
-                  <p className="text-base lg:text-lg leading-relaxed">
-                    Passionate about crafting innovative solutions through code. Currently mastering 
-                    <span className="text-blue-400 font-medium"> React, Node.js, and Firebase</span> while exploring the 
-                    fascinating world of <span className="text-purple-400 font-medium">artificial intelligence</span>.
-                  </p>
+                  {/* Full content for desktop */}
+                  <div className="hidden md:block">
+                    <p className="text-base lg:text-lg leading-relaxed">
+                      Passionate about crafting innovative solutions through code. Currently mastering 
+                      <span className="text-blue-400 font-medium"> React, Node.js, and Firebase</span> while exploring the 
+                      fascinating world of <span className="text-purple-400 font-medium">artificial intelligence</span>.
+                    </p>
+                    
+                    <p className="text-sm lg:text-base leading-relaxed">
+                      From algorithms to AI tools, I'm constantly learning and building projects that 
+                      bridge traditional programming with cutting-edge technology.
+                    </p>
+                    
+                    <p className="text-sm text-gray-500 italic">
+                      "Transforming ideas into reality through the power of programming"
+                    </p>
+                  </div>
                   
-                  <p className="text-sm lg:text-base leading-relaxed">
-                    From algorithms to AI tools, I'm constantly learning and building projects that 
-                    bridge traditional programming with cutting-edge technology.
-                  </p>
-                  
-                  <p className="text-sm text-gray-500 italic">
-                    "Transforming ideas into reality through the power of programming"
-                  </p>
+                  {/* Reduced content for mobile */}
+                  <div className="md:hidden">
+                    <p className="text-base leading-relaxed">
+                      Passionate about creating innovative solutions with 
+                      <span className="text-blue-400 font-medium"> React, Node.js</span> and exploring 
+                      <span className="text-purple-400 font-medium"> AI</span>.
+                    </p>
+                    
+                    <p className="text-sm text-gray-500 italic">
+                      "Building the future through code"
+                    </p>
+                  </div>
                 </div>
                 
                 <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start pt-4">
