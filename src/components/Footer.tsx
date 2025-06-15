@@ -11,31 +11,35 @@ const Footer = () => {
     {
       name: 'LinkedIn',
       icon: <Linkedin className="h-5 w-5" />,
-      url: '#',
+      url: 'https://www.linkedin.com/in/sai-kiran-your-profile', // Replace with your actual LinkedIn
       color: 'hover:text-blue-500'
     },
     {
       name: 'GitHub',
       icon: <Github className="h-5 w-5" />,
-      url: '#',
+      url: 'https://github.com/yourusername', // Replace with your actual GitHub
       color: 'hover:text-gray-400'
     },
     {
       name: 'LeetCode',
       icon: <Code className="h-5 w-5" />,
-      url: '#',
+      url: 'https://leetcode.com/yourusername', // Replace with your actual LeetCode
       color: 'hover:text-yellow-500'
     },
     {
       name: 'GeeksforGeeks',
       icon: <Users className="h-5 w-5" />,
-      url: '#',
+      url: 'https://auth.geeksforgeeks.org/user/yourusername', // Replace with your actual GFG
       color: 'hover:text-green-500'
     }
   ];
 
+  const handleSocialClick = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
-    <footer className="bg-gray-900 border-t border-gray-800">
+    <footer className="bg-gray-900 dark:bg-gray-900 border-t border-gray-800 transition-all duration-300">
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left mb-4 md:mb-0">
@@ -47,14 +51,14 @@ const Footer = () => {
           <div className="flex items-center space-x-6">
             <div className="flex space-x-4">
               {socialLinks.map((link, index) => (
-                <a
+                <button
                   key={index}
-                  href={link.url}
-                  className={`text-gray-400 ${link.color} transition-colors duration-300`}
-                  title={link.name}
+                  onClick={() => handleSocialClick(link.url)}
+                  className={`text-gray-400 ${link.color} transition-all duration-300 hover:scale-110`}
+                  title={`Visit my ${link.name} profile`}
                 >
                   {link.icon}
-                </a>
+                </button>
               ))}
             </div>
             

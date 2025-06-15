@@ -1,10 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +36,7 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-gray-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+      scrolled ? 'bg-gray-900/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
@@ -57,18 +59,28 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Theme Toggle and Mobile Menu */}
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-gray-300 hover:text-white transition-colors duration-300"
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            
+            <button
+              className="md:hidden text-white"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-gray-900/95 backdrop-blur-sm rounded-lg mt-2 py-4">
+          <div className="md:hidden bg-gray-900/95 backdrop-blur-sm rounded-lg mt-2 py-4 animate-fade-in">
             {navItems.map((item) => (
               <button
                 key={item.name}
