@@ -37,10 +37,17 @@ const Header = () => {
       scrolled ? 'bg-gray-900/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="text-2xl font-bold text-white">
-            SK<span className="text-blue-400">.</span>
+        <div className="flex items-center justify-between h-16 md:h-16">
+          {/* Logo and Mobile Content */}
+          <div className="flex flex-col md:flex-row md:items-center">
+            <div className="text-2xl font-bold text-white">
+              SK<span className="text-blue-400">.</span>
+            </div>
+            {/* Mobile Content - Name and Title */}
+            <div className="md:hidden">
+              <div className="text-sm text-white font-medium">Sai Kiran</div>
+              <div className="text-xs text-gray-300">CS Student</div>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
