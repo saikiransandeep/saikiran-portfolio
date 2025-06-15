@@ -9,27 +9,41 @@ const CertificationsSection = () => {
       title: "Full Stack Java Internship",
       issuedBy: "Tech Corporation",
       date: "December 2024",
-      description: "Comprehensive training in Java full-stack development covering Spring Boot, React, and database management."
+      description: "Comprehensive training in Java full-stack development covering Spring Boot, React, and database management.",
+      certificateFile: "/certificates/java-internship-certificate.pdf"
     },
     {
       title: "HTML5 Course Certification",
       issuedBy: "Web Development Institute",
       date: "November 2024",
-      description: "Advanced HTML5 features, semantic markup, and modern web standards implementation."
+      description: "Advanced HTML5 features, semantic markup, and modern web standards implementation.",
+      certificateFile: "/certificates/html5-certificate.pdf"
     },
     {
       title: "Avanthi Excellence Certificate",
       issuedBy: "Avanthi Institute of Engineering and Technology",
       date: "October 2024",
-      description: "Recognition for outstanding academic performance and technical project contributions."
+      description: "Recognition for outstanding academic performance and technical project contributions.",
+      certificateFile: "/certificates/avanthi-excellence-certificate.pdf"
     },
     {
       title: "Avanthi Leadership Certificate",
       issuedBy: "Avanthi Institute of Engineering and Technology",
       date: "September 2024",
-      description: "Award for demonstrating exceptional leadership skills in team projects and student activities."
+      description: "Award for demonstrating exceptional leadership skills in team projects and student activities.",
+      certificateFile: "/certificates/avanthi-leadership-certificate.pdf"
     }
   ];
+
+  const handleDownload = (certificateFile: string, title: string) => {
+    const link = document.createElement('a');
+    link.href = certificateFile;
+    link.download = `${title.replace(/\s+/g, '-').toLowerCase()}-certificate.pdf`;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section id="certifications" className="py-20 bg-gray-800">
@@ -61,6 +75,7 @@ const CertificationsSection = () => {
               <Button 
                 variant="outline" 
                 size="sm"
+                onClick={() => handleDownload(cert.certificateFile, cert.title)}
                 className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100 hover:text-green-800 hover:border-green-300 transition-all duration-300 group"
               >
                 <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
