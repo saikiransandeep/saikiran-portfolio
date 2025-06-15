@@ -6,32 +6,32 @@ const SkillsSection = () => {
   const skillCategories = [
     {
       title: "Programming Languages",
-      icon: <Code2 className="h-8 w-8" />,
-      skills: ["Java", "Python", "JavaScript", "TypeScript"],
+      icon: <Code2 className="h-6 w-6 lg:h-8 lg:w-8" />,
+      skills: ["Java", "Python", "JavaScript"],
       color: "from-blue-500 to-blue-600",
       bgColor: "bg-blue-500/10",
       borderColor: "border-blue-500/30"
     },
     {
       title: "Frontend Technologies",
-      icon: <Globe className="h-8 w-8" />,
-      skills: ["HTML5", "CSS3", "React", "Tailwind CSS"],
+      icon: <Globe className="h-6 w-6 lg:h-8 lg:w-8" />,
+      skills: ["React", "HTML5", "CSS3"],
       color: "from-green-500 to-green-600",
       bgColor: "bg-green-500/10",
       borderColor: "border-green-500/30"
     },
     {
       title: "Backend & APIs",
-      icon: <Server className="h-8 w-8" />,
-      skills: ["Node.js", "Spring Boot", "JWT"],
+      icon: <Server className="h-6 w-6 lg:h-8 lg:w-8" />,
+      skills: ["Node.js", "Spring Boot"],
       color: "from-purple-500 to-purple-600",
       bgColor: "bg-purple-500/10",
       borderColor: "border-purple-500/30"
     },
     {
       title: "Databases",
-      icon: <Database className="h-8 w-8" />,
-      skills: ["MongoDB", "PostgreSQL", "SQLite"],
+      icon: <Database className="h-6 w-6 lg:h-8 lg:w-8" />,
+      skills: ["MongoDB", "PostgreSQL"],
       color: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-500/10",
       borderColor: "border-orange-500/30"
@@ -39,47 +39,47 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-900 relative overflow-hidden">
+    <section id="skills" className="py-16 lg:py-20 bg-gray-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
       </div>
       
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="text-center mb-12 lg:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Technologies</span>
           </h2>
-          <p className="text-gray-400 text-lg mb-6">Technical expertise across the development stack</p>
+          <p className="text-gray-400 text-base lg:text-lg mb-6">Technical expertise across the development stack</p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto">
           {skillCategories.map((category, index) => (
             <div 
               key={index}
-              className={`group relative p-8 rounded-3xl ${category.bgColor} ${category.borderColor} border-2 backdrop-blur-sm hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-white/10`}
+              className={`group relative p-6 lg:p-8 rounded-3xl ${category.bgColor} ${category.borderColor} border-2 backdrop-blur-sm hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-white/10`}
               style={{
                 animationDelay: `${index * 150}ms`
               }}
             >
               {/* Icon header */}
-              <div className="flex flex-col items-center mb-8">
-                <div className={`p-4 rounded-2xl bg-gradient-to-r ${category.color} text-white mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+              <div className="flex flex-col items-center mb-6 lg:mb-8">
+                <div className={`p-3 lg:p-4 rounded-2xl bg-gradient-to-r ${category.color} text-white mb-3 lg:mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                   {category.icon}
                 </div>
-                <h3 className="text-xl font-bold text-center text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+                <h3 className="text-lg lg:text-xl font-bold text-center text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
                   {category.title}
                 </h3>
               </div>
 
               {/* Skills grid */}
-              <div className="space-y-3">
+              <div className="space-y-2 lg:space-y-3">
                 {category.skills.map((skill, skillIndex) => (
                   <div 
                     key={skillIndex}
-                    className="flex items-center justify-center p-3 rounded-xl bg-gray-800/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 hover:bg-gray-800/70"
+                    className="flex items-center justify-center p-2 lg:p-3 rounded-xl bg-gray-800/50 border border-gray-700/50 hover:border-gray-600/50 transition-all duration-300 hover:bg-gray-800/70"
                   >
                     <span className="text-gray-300 font-medium text-sm hover:text-white transition-colors duration-200">
                       {skill}
@@ -95,22 +95,22 @@ const SkillsSection = () => {
         </div>
 
         {/* Bottom stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          <div className="text-center p-6 rounded-2xl bg-gray-800/30 border border-gray-700/50 backdrop-blur-sm">
-            <div className="text-3xl font-bold text-blue-400 mb-2">14</div>
-            <div className="text-gray-400 text-sm">Total Skills</div>
+        <div className="mt-12 lg:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-4xl mx-auto">
+          <div className="text-center p-4 lg:p-6 rounded-2xl bg-gray-800/30 border border-gray-700/50 backdrop-blur-sm">
+            <div className="text-2xl lg:text-3xl font-bold text-blue-400 mb-2">10</div>
+            <div className="text-gray-400 text-xs lg:text-sm">Total Skills</div>
           </div>
-          <div className="text-center p-6 rounded-2xl bg-gray-800/30 border border-gray-700/50 backdrop-blur-sm">
-            <div className="text-3xl font-bold text-green-400 mb-2">4</div>
-            <div className="text-gray-400 text-sm">Tech Categories</div>
+          <div className="text-center p-4 lg:p-6 rounded-2xl bg-gray-800/30 border border-gray-700/50 backdrop-blur-sm">
+            <div className="text-2xl lg:text-3xl font-bold text-green-400 mb-2">4</div>
+            <div className="text-gray-400 text-xs lg:text-sm">Tech Categories</div>
           </div>
-          <div className="text-center p-6 rounded-2xl bg-gray-800/30 border border-gray-700/50 backdrop-blur-sm">
-            <div className="text-3xl font-bold text-purple-400 mb-2">3+</div>
-            <div className="text-gray-400 text-sm">Years Learning</div>
+          <div className="text-center p-4 lg:p-6 rounded-2xl bg-gray-800/30 border border-gray-700/50 backdrop-blur-sm">
+            <div className="text-2xl lg:text-3xl font-bold text-purple-400 mb-2">3+</div>
+            <div className="text-gray-400 text-xs lg:text-sm">Years Learning</div>
           </div>
-          <div className="text-center p-6 rounded-2xl bg-gray-800/30 border border-gray-700/50 backdrop-blur-sm">
-            <div className="text-3xl font-bold text-orange-400 mb-2">85%</div>
-            <div className="text-gray-400 text-sm">Avg Proficiency</div>
+          <div className="text-center p-4 lg:p-6 rounded-2xl bg-gray-800/30 border border-gray-700/50 backdrop-blur-sm">
+            <div className="text-2xl lg:text-3xl font-bold text-orange-400 mb-2">85%</div>
+            <div className="text-gray-400 text-xs lg:text-sm">Avg Proficiency</div>
           </div>
         </div>
       </div>
