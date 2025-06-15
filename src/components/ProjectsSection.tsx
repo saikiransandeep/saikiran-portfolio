@@ -15,7 +15,7 @@ const ProjectsSection = () => {
       year: "2024"
     },
     {
-      title: "Facial Phase Estimation", 
+      title: "Facial Phase Detection", 
       description: "AI-powered application for detecting and analyzing facial phases using computer vision and machine learning algorithms. Implements advanced ML models for accurate detection.",
       techStack: ["Python", "OpenCV", "TensorFlow", "NumPy"],
       gradient: "from-blue-500 via-cyan-500 to-teal-500",
@@ -49,7 +49,7 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section id="projects" className="py-16 lg:py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+    <section id="projects" className="py-12 lg:py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl"></div>
@@ -59,69 +59,70 @@ const ProjectsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+          <div className="text-center mb-8 lg:mb-12">
+            <h2 className="text-2xl lg:text-4xl font-bold mb-4">
               <span className="text-white">Featured </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
                 Projects
               </span>
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mx-auto rounded-full mb-4"></div>
-            <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            <div className="w-20 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mx-auto rounded-full mb-4"></div>
+            <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed text-sm lg:text-base px-4">
               Showcasing innovative solutions built with cutting-edge technologies and modern development practices.
             </p>
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-8 lg:mb-12">
             {projects.map((project, index) => (
               <Card 
                 key={index}
                 className="group bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-white/5 overflow-hidden"
               >
                 <CardContent className="p-0">
-                  {/* Project Header with Gradient */}
-                  <div className={`relative h-20 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-all duration-500"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  {/* Project Header with Clean Layout */}
+                  <div className={`relative bg-gradient-to-br ${project.gradient} p-4 lg:p-5`}>
+                    <div className="absolute inset-0 bg-black/20"></div>
                     
-                    {/* Category Badge */}
-                    <div className="absolute top-3 left-3">
-                      <span className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full border border-white/20">
+                    {/* Category Badge - Cleaner positioning */}
+                    <div className="relative z-10 flex justify-between items-start mb-3">
+                      <span className="px-3 py-1 bg-white/90 text-gray-800 text-xs font-semibold rounded-full shadow-sm">
                         {project.category}
                       </span>
+                      <div className="flex items-center text-white/90 text-xs">
+                        <Calendar className="h-3 w-3 mr-1" />
+                        <span>{project.year}</span>
+                      </div>
                     </div>
 
-                    {/* Project Title */}
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <h3 className="text-lg font-bold text-white mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-200 transition-all duration-300">
+                    {/* Project Title - Much cleaner */}
+                    <div className="relative z-10">
+                      <h3 className="text-xl lg:text-2xl font-bold text-white mb-1 leading-tight">
                         {project.title}
                       </h3>
                       <div className="flex items-center text-white/80 text-xs">
-                        <Calendar className="h-3 w-3 mr-1" />
-                        <span>{project.year}</span>
-                        <User className="h-3 w-3 ml-3 mr-1" />
+                        <User className="h-3 w-3 mr-1" />
                         <span>Solo Developer</span>
                       </div>
                     </div>
                   </div>
 
-                  {/* Project Content */}
-                  <div className="p-4">
-                    <p className="text-gray-300 leading-relaxed mb-4 text-sm">
+                  {/* Project Content - Simplified */}
+                  <div className="p-4 lg:p-5">
+                    <p className="text-gray-300 leading-relaxed mb-4 text-sm lg:text-base line-clamp-3">
                       {project.description}
                     </p>
 
-                    {/* Tech Stack */}
+                    {/* Tech Stack - Cleaner design */}
                     <div className="mb-4">
-                      <h4 className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wider">
-                        Technology Stack
+                      <h4 className="text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider">
+                        Tech Stack
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {project.techStack.map((tech, techIndex) => (
                           <span 
                             key={techIndex} 
-                            className="px-2 py-1 bg-gradient-to-r from-gray-700 to-gray-600 text-blue-300 text-xs font-medium rounded border border-gray-600/50 hover:border-blue-400/50 hover:shadow-sm hover:shadow-blue-400/20 transition-all duration-300"
+                            className="px-2 py-1 bg-gray-700/80 text-blue-300 text-xs font-medium rounded border border-gray-600/50 hover:border-blue-400/50 transition-all duration-300"
                           >
                             {tech}
                           </span>
@@ -129,22 +130,22 @@ const ProjectsSection = () => {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex gap-3">
+                    {/* Action Buttons - Simplified */}
+                    <div className="flex gap-2">
                       <Button 
                         variant="outline" 
                         size="sm"
-                        className="flex-1 bg-slate-100 border-slate-300 text-slate-700 hover:bg-slate-200 hover:text-slate-800 hover:border-slate-400 transition-all duration-300 group/btn"
+                        className="flex-1 bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200 hover:text-gray-800 transition-all duration-300 text-xs lg:text-sm"
                       >
-                        <Github className="mr-2 h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
+                        <Github className="mr-1 h-3 w-3 lg:h-4 lg:w-4" />
                         Code
                       </Button>
                       <Button 
                         variant="outline" 
                         size="sm"
-                        className="flex-1 bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:text-blue-800 hover:border-blue-300 transition-all duration-300 group/btn"
+                        className="flex-1 bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:text-blue-800 transition-all duration-300 text-xs lg:text-sm"
                       >
-                        <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:rotate-12 transition-transform duration-300" />
+                        <ExternalLink className="mr-1 h-3 w-3 lg:h-4 lg:w-4" />
                         Demo
                       </Button>
                     </div>
@@ -154,21 +155,21 @@ const ProjectsSection = () => {
             ))}
           </div>
 
-          {/* Bottom CTA Section */}
+          {/* Bottom CTA Section - Simplified */}
           <div className="text-center">
-            <div className="inline-block p-6 bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-xl border border-gray-600/30 backdrop-blur-sm">
-              <h3 className="text-xl font-bold text-white mb-3">Interested in My Work?</h3>
-              <p className="text-gray-300 mb-5 max-w-md mx-auto">
+            <div className="inline-block p-4 lg:p-6 bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-xl border border-gray-600/30 backdrop-blur-sm mx-4">
+              <h3 className="text-lg lg:text-xl font-bold text-white mb-2">Interested in My Work?</h3>
+              <p className="text-gray-300 mb-4 max-w-md mx-auto text-sm lg:text-base">
                 Explore more projects on GitHub or get in touch to discuss potential collaborations.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Button className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-gray-900 px-6 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105">
+                <Button className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-gray-900 px-4 lg:px-6 py-2 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base">
                   <Github className="mr-2 h-4 w-4" />
                   View All Projects
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:text-blue-800 hover:border-blue-300 px-6 py-2 rounded-lg font-medium transition-all duration-300"
+                  className="bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:text-blue-800 hover:border-blue-300 px-4 lg:px-6 py-2 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base"
                 >
                   Get In Touch
                 </Button>
