@@ -1,12 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { useTheme } from '@/contexts/ThemeContext';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,16 +57,8 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Theme Toggle and Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={toggleTheme}
-              className="p-2 text-gray-300 hover:text-white transition-colors duration-300"
-              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            
+          {/* Mobile Menu */}
+          <div className="flex items-center">
             <button
               className="md:hidden text-white"
               onClick={() => setIsOpen(!isOpen)}
