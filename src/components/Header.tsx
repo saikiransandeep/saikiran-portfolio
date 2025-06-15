@@ -34,13 +34,13 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-gray-900/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+      scrolled ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm border-b border-gray-200/50 dark:border-gray-700/50' : 'bg-transparent'
     }`}>
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex items-center justify-between h-12 md:h-16">
           {/* Logo */}
-          <div className="text-2xl font-bold text-white">
-            SK<span className="text-blue-400">.</span>
+          <div className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white">
+            SK<span className="text-blue-600">.</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -49,33 +49,31 @@ const Header = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="relative px-4 py-2 text-gray-300 font-medium transition-all duration-300 hover:text-white group"
+                className="relative px-3 py-2 text-gray-700 dark:text-gray-300 font-medium text-sm transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 group"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600 dark:bg-blue-400 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </button>
             ))}
           </nav>
 
-          {/* Mobile Menu */}
-          <div className="flex items-center">
-            <button
-              className="md:hidden text-white"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-gray-900 dark:text-white p-1"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-gray-900/95 backdrop-blur-sm rounded-lg mt-2 py-4 animate-fade-in">
+          <div className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-lg mt-2 py-2 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-6 py-3 text-gray-300 font-medium transition-all duration-300 hover:text-white hover:bg-gray-800/50"
+                className="block w-full text-left px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-sm"
               >
                 {item.name}
               </button>
