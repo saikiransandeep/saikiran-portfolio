@@ -37,9 +37,9 @@ const Header = () => {
       scrolled ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm border-b border-gray-200/50 dark:border-gray-700/50' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-12 md:h-16">
+        <div className="flex items-center justify-between h-10 sm:h-12 md:h-16">
           {/* Logo */}
-          <div className="text-lg md:text-2xl font-bold text-gray-900 dark:text-white">
+          <div className="text-base sm:text-lg md:text-2xl font-bold text-gray-900 dark:text-white">
             SK<span className="text-blue-600">.</span>
           </div>
 
@@ -62,18 +62,18 @@ const Header = () => {
             className="md:hidden text-gray-900 dark:text-white p-1"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={16} /> : <Menu size={16} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-lg mt-2 py-2 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+          <div className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-lg mt-1 py-1 shadow-lg border border-gray-200/50 dark:border-gray-700/50">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-4 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-sm"
+                className="block w-full text-left px-3 py-2 text-gray-700 dark:text-gray-300 font-medium transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 text-xs"
               >
                 {item.name}
               </button>
