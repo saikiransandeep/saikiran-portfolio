@@ -1,293 +1,220 @@
 
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Linkedin, Github, Code, Users } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Code, Users, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { toast } from '@/hooks/use-toast';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    // Simulate form submission (replace with your actual form handling)
+    try {
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API call
+      
+      // Here you would typically send the data to your backend or email service
       console.log('Form submitted:', formData);
+      
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for reaching out. I'll get back to you within 24 hours!",
+      });
+      
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      alert('Message sent successfully!');
-    }, 2000);
+    }
   };
 
-  const contactInfo = [
-    {
-      icon: <Mail className="h-6 w-6" />,
-      title: "Email",
-      content: "saikiransandeep004@gmail.com",
-      action: "mailto:saikiransandeep004@gmail.com"
-    },
-    {
-      icon: <Phone className="h-6 w-6" />,
-      title: "Phone",
-      content: "+91 90006 48147",
-      action: "tel:+919000648147"
-    },
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      title: "Location",
-      content: "Telangana, India",
-      action: null
-    }
-  ];
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
   const socialLinks = [
     {
       name: 'LinkedIn',
-      icon: <Linkedin className="h-5 w-5" />,
+      icon: <Linkedin className="h-6 w-6" />,
       url: 'https://linkedin.com/in/sai-kiran-383474327',
-      color: '#D2691E'
+      color: 'hover:text-blue-500'
     },
     {
       name: 'GitHub',
-      icon: <Github className="h-5 w-5" />,
+      icon: <Github className="h-6 w-6" />,
       url: 'https://github.com/saikiransandeep',
-      color: '#D2691E'
+      color: 'hover:text-gray-400'
     },
     {
       name: 'LeetCode',
-      icon: <Code className="h-5 w-5" />,
+      icon: <Code className="h-6 w-6" />,
       url: 'https://leetcode.com/u/saikiransandeep',
-      color: '#D2691E'
+      color: 'hover:text-yellow-500'
     },
     {
       name: 'GeeksforGeeks',
-      icon: <Users className="h-5 w-5" />,
+      icon: <Users className="h-6 w-6" />,
       url: 'https://geeksforgeeks.org/user/saikirans8k6c',
-      color: '#D2691E'
+      color: 'hover:text-green-500'
     }
   ];
-
-  const handleContactClick = (action: string | null) => {
-    if (action) {
-      window.open(action, '_blank');
-    }
-  };
 
   const handleSocialClick = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="contact" className="py-20" style={{ backgroundColor: '#4B3832' }}>
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4" style={{ color: '#F5F5DC' }}>Get In Touch</h2>
-          <p className="text-lg mb-6" style={{ color: '#F5F5DC' }}>
-            Let's discuss opportunities and collaborate on exciting projects
-          </p>
-          <div className="w-24 h-1 mx-auto rounded-full" style={{ backgroundColor: '#D2691E' }}></div>
-        </div>
+    <>
+      {isSubmitting && <LoadingSpinner />}
+      <section id="contact" className="py-20 bg-gray-800 dark:bg-gray-800 transition-all duration-300">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl font-bold text-white dark:text-white mb-4">Get In Touch</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
+            <p className="text-gray-300 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
+              Ready to collaborate or have a question? I'd love to hear from you. 
+              Let's build something amazing together!
+            </p>
+          </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold mb-6" style={{ color: '#F5F5DC' }}>Contact Information</h3>
-              <div className="space-y-4">
-                {contactInfo.map((info, index) => (
-                  <div 
-                    key={index}
-                    className={`flex items-center p-4 rounded-lg transition-all duration-300 ${
-                      info.action ? 'cursor-pointer hover:scale-105' : ''
-                    }`}
-                    style={{ backgroundColor: '#F5F5DC' }}
-                    onClick={() => handleContactClick(info.action)}
-                  >
-                    <div className="p-3 rounded-lg mr-4" style={{ backgroundColor: '#D2691E' }}>
-                      <div style={{ color: '#F5F5DC' }}>{info.icon}</div>
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Contact Information */}
+            <div className="space-y-8 animate-slide-in-left">
+              <div>
+                <h3 className="text-2xl font-semibold text-white dark:text-white mb-6">Contact Information</h3>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center transition-all duration-300 hover:scale-105">
+                    <div className="bg-blue-600/20 p-3 rounded-lg mr-4">
+                      <Mail className="h-6 w-6 text-blue-400" />
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-1" style={{ color: '#3E2723' }}>{info.title}</h4>
-                      <p style={{ color: '#4B3832' }}>{info.content}</p>
+                      <p className="text-gray-400 text-sm">Email</p>
+                      <a 
+                        href="mailto:saikiransandeep1@gmail.com"
+                        className="text-white hover:text-blue-400 transition-colors duration-300"
+                      >
+                        saikiransandeep1@gmail.com
+                      </a>
                     </div>
                   </div>
-                ))}
+                  
+                  <div className="flex items-center transition-all duration-300 hover:scale-105">
+                    <div className="bg-green-600/20 p-3 rounded-lg mr-4">
+                      <Phone className="h-6 w-6 text-green-400" />
+                    </div>
+                    <div>
+                      <p className="text-gray-400 text-sm">Phone</p>
+                      <a 
+                        href="tel:+919398150899"
+                        className="text-white hover:text-green-400 transition-colors duration-300"
+                      >
+                        +91 93981 50899
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-semibold text-white dark:text-white mb-4">Connect With Me</h4>
+                <div className="flex space-x-4">
+                  {socialLinks.map((link, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleSocialClick(link.url)}
+                      className={`bg-gray-700 p-3 rounded-lg text-gray-400 ${link.color} transition-all duration-300 hover:scale-110 hover:shadow-lg`}
+                      title={`Visit my ${link.name} profile`}
+                    >
+                      {link.icon}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div>
-              <h3 className="text-2xl font-bold mb-6" style={{ color: '#F5F5DC' }}>Connect With Me</h3>
-              <div className="flex space-x-4">
-                {socialLinks.map((link, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleSocialClick(link.url)}
-                    className="p-3 rounded-lg transition-all duration-300 hover:scale-110"
-                    style={{ backgroundColor: '#D2691E', color: '#F5F5DC' }}
-                    onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#F5F5DC'}
-                    onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#D2691E'}
-                    title={`Visit my ${link.name} profile`}
-                  >
-                    {link.icon}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Call to Action */}
-            <div className="p-6 rounded-lg" style={{ backgroundColor: '#F5F5DC' }}>
-              <h4 className="text-xl font-bold mb-3" style={{ color: '#3E2723' }}>Ready to Start a Project?</h4>
-              <p className="mb-4" style={{ color: '#4B3832' }}>
-                I'm always excited to work on new challenges and innovative projects. 
-                Let's discuss how we can bring your ideas to life!
-              </p>
-              <Button 
-                className="transition-all duration-300 hover:scale-105 text-white"
-                style={{ backgroundColor: '#D2691E' }}
-                onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#B8621E'}
-                onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#D2691E'}
-                onClick={() => handleContactClick('mailto:saikiransandeep004@gmail.com')}
-              >
-                <Mail className="mr-2 h-4 w-4" />
-                Start Conversation
-              </Button>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="p-8 rounded-lg" style={{ backgroundColor: '#F5F5DC' }}>
-            <h3 className="text-2xl font-bold mb-6" style={{ color: '#3E2723' }}>Send Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+            {/* Contact Form */}
+            <div className="bg-gray-900/50 p-8 rounded-lg animate-slide-in-right">
+              <h3 className="text-2xl font-semibold text-white dark:text-white mb-6">Send Message</h3>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: '#3E2723' }}>
-                    Full Name
-                  </label>
-                  <input
+                  <Input
                     type="text"
-                    id="name"
                     name="name"
+                    placeholder="Your Name *"
                     value={formData.name}
-                    onChange={handleInputChange}
+                    onChange={handleChange}
                     required
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition-all duration-300"
-                    style={{ 
-                      backgroundColor: 'white',
-                      color: '#3E2723',
-                      focusRingColor: '#D2691E'
-                    }}
-                    placeholder="Your full name"
+                    className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 transition-all duration-300"
                   />
                 </div>
+                
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2" style={{ color: '#3E2723' }}>
-                    Email Address
-                  </label>
-                  <input
+                  <Input
                     type="email"
-                    id="email"
                     name="email"
+                    placeholder="Your Email *"
                     value={formData.email}
-                    onChange={handleInputChange}
+                    onChange={handleChange}
                     required
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition-all duration-300"
-                    style={{ 
-                      backgroundColor: 'white',
-                      color: '#3E2723'
-                    }}
-                    placeholder="your.email@example.com"
+                    className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 transition-all duration-300"
                   />
                 </div>
-              </div>
-
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2" style={{ color: '#3E2723' }}>
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition-all duration-300"
-                  style={{ 
-                    backgroundColor: 'white',
-                    color: '#3E2723'
-                  }}
-                  placeholder="Project discussion, collaboration, etc."
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2" style={{ color: '#3E2723' }}>
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={5}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 resize-vertical"
-                  style={{ 
-                    backgroundColor: 'white',
-                    color: '#3E2723'
-                  }}
-                  placeholder="Tell me about your project or idea..."
-                />
-              </div>
-
-              <Button 
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full py-3 transition-all duration-300 hover:scale-105 text-white"
-                style={{ backgroundColor: isSubmitting ? '#4B3832' : '#D2691E' }}
-                onMouseEnter={(e) => {
-                  if (!(e.target as HTMLButtonElement).disabled) {
-                    (e.target as HTMLElement).style.backgroundColor = '#B8621E';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!(e.target as HTMLButtonElement).disabled) {
-                    (e.target as HTMLElement).style.backgroundColor = '#D2691E';
-                  }
-                }}
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="mr-2 h-4 w-4" />
-                    Send Message
-                  </>
-                )}
-              </Button>
-            </form>
+                
+                <div>
+                  <Textarea
+                    name="message"
+                    placeholder="Your Message *"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 resize-none transition-all duration-300"
+                  />
+                </div>
+                
+                <Button 
+                  type="submit"
+                  disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-all duration-300 hover:scale-105 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="mr-2 h-4 w-4" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
