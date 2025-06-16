@@ -12,25 +12,25 @@ const Footer = () => {
       name: 'LinkedIn',
       icon: <Linkedin className="h-5 w-5" />,
       url: 'https://linkedin.com/in/sai-kiran-383474327',
-      color: '#FF914D'
+      color: '#D2691E'
     },
     {
       name: 'GitHub',
       icon: <Github className="h-5 w-5" />,
       url: 'https://github.com/saikiransandeep',
-      color: '#FF914D'
+      color: '#D2691E'
     },
     {
       name: 'LeetCode',
       icon: <Code className="h-5 w-5" />,
       url: 'https://leetcode.com/u/saikiransandeep',
-      color: '#FF914D'
+      color: '#D2691E'
     },
     {
       name: 'GeeksforGeeks',
       icon: <Users className="h-5 w-5" />,
       url: 'https://geeksforgeeks.org/user/saikirans8k6c',
-      color: '#FF914D'
+      color: '#D2691E'
     }
   ];
 
@@ -56,8 +56,8 @@ const Footer = () => {
                   onClick={() => handleSocialClick(link.url)}
                   className="transition-all duration-300 hover:scale-110"
                   style={{ color: '#4B3832' }}
-                  onMouseEnter={(e) => e.target.style.color = link.color}
-                  onMouseLeave={(e) => e.target.style.color = '#4B3832'}
+                  onMouseEnter={(e) => (e.target as HTMLElement).style.color = link.color}
+                  onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#4B3832'}
                   title={`Visit my ${link.name} profile`}
                 >
                   {link.icon}
@@ -68,9 +68,9 @@ const Footer = () => {
             <button
               onClick={scrollToTop}
               className="p-2 rounded-full transition-all duration-300 hover:scale-110 text-white"
-              style={{ backgroundColor: '#FF914D' }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = '#4B3832'}
-              onMouseLeave={(e) => e.target.style.backgroundColor = '#FF914D'}
+              style={{ backgroundColor: '#D2691E' }}
+              onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = '#4B3832'}
+              onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = '#D2691E'}
               title="Scroll to top"
             >
               <ArrowUp className="h-5 w-5" />

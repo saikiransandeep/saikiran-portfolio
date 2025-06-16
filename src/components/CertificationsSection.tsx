@@ -50,19 +50,19 @@ const CertificationsSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4" style={{ color: '#F5F5DC' }}>Certifications & Achievements</h2>
-          <div className="w-24 h-1 mx-auto rounded-full" style={{ backgroundColor: '#FF914D' }}></div>
+          <div className="w-24 h-1 mx-auto rounded-full" style={{ backgroundColor: '#D2691E' }}></div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {certifications.map((cert, index) => (
             <div key={index} className="p-6 rounded-lg hover:scale-105 transition-all duration-300" style={{ backgroundColor: '#F5F5DC' }}>
               <div className="flex items-start mb-4">
-                <div className="p-3 rounded-lg mr-4" style={{ backgroundColor: '#FF914D' }}>
+                <div className="p-3 rounded-lg mr-4" style={{ backgroundColor: '#D2691E' }}>
                   <Award className="h-6 w-6" style={{ color: '#F5F5DC' }} />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold mb-2" style={{ color: '#3E2723' }}>{cert.title}</h3>
-                  <p className="font-medium mb-1" style={{ color: '#FF914D' }}>{cert.issuedBy}</p>
+                  <p className="font-medium mb-1" style={{ color: '#D2691E' }}>{cert.issuedBy}</p>
                   <div className="flex items-center text-sm mb-3" style={{ color: '#4B3832' }}>
                     <Calendar className="h-4 w-4 mr-1" />
                     {cert.date}
@@ -78,16 +78,16 @@ const CertificationsSection = () => {
                 onClick={() => handleDownload(cert.certificateFile, cert.title)}
                 className="transition-all duration-300 group border-0"
                 style={{ 
-                  backgroundColor: '#FF914D', 
+                  backgroundColor: '#D2691E', 
                   color: '#F5F5DC'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#4B3832';
-                  e.target.style.color = '#F5F5DC';
+                  (e.target as HTMLElement).style.backgroundColor = '#4B3832';
+                  (e.target as HTMLElement).style.color = '#F5F5DC';
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = '#FF914D';
-                  e.target.style.color = '#F5F5DC';
+                  (e.target as HTMLElement).style.backgroundColor = '#D2691E';
+                  (e.target as HTMLElement).style.color = '#F5F5DC';
                 }}
               >
                 <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />

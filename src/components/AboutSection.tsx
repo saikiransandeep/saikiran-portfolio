@@ -5,22 +5,22 @@ import { Code, Database, Globe, Zap } from 'lucide-react';
 const AboutSection = () => {
   const highlights = [
     {
-      icon: <Code className="h-6 w-6" style={{ color: '#FF914D' }} />,
+      icon: <Code className="h-6 w-6" style={{ color: '#D2691E' }} />,
       title: "Programming Passion",
       description: "Passionate about coding and full-stack development"
     },
     {
-      icon: <Globe className="h-6 w-6" style={{ color: '#FF914D' }} />,
+      icon: <Globe className="h-6 w-6" style={{ color: '#D2691E' }} />,
       title: "Web Development",
       description: "Strong interest in modern web technologies"
     },
     {
-      icon: <Database className="h-6 w-6" style={{ color: '#FF914D' }} />,
+      icon: <Database className="h-6 w-6" style={{ color: '#D2691E' }} />,
       title: "Practical Solutions",
       description: "Building real-world applications that matter"
     },
     {
-      icon: <Zap className="h-6 w-6" style={{ color: '#FF914D' }} />,
+      icon: <Zap className="h-6 w-6" style={{ color: '#D2691E' }} />,
       title: "Solo Projects",
       description: "Enjoys working independently on tech challenges"
     }
@@ -32,7 +32,7 @@ const AboutSection = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#3E2723' }}>About Me</h2>
-            <div className="w-24 h-1 mx-auto rounded-full" style={{ backgroundColor: '#FF914D' }}></div>
+            <div className="w-24 h-1 mx-auto rounded-full" style={{ backgroundColor: '#D2691E' }}></div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -44,8 +44,8 @@ const AboutSection = () => {
               </p>
               
               <p className="text-base lg:text-lg leading-relaxed" style={{ color: '#4B3832' }}>
-                With expertise in <span className="font-semibold" style={{ color: '#FF914D' }}>Java, Python, and C</span>, 
-                along with modern web technologies like <span className="font-semibold" style={{ color: '#FF914D' }}>React, Node.js, and Firebase</span>, 
+                With expertise in <span className="font-semibold" style={{ color: '#D2691E' }}>Java, Python, and C</span>, 
+                along with modern web technologies like <span className="font-semibold" style={{ color: '#D2691E' }}>React, Node.js, and Firebase</span>, 
                 I bring ideas to life through code.
               </p>
               

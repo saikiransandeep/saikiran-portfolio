@@ -40,7 +40,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="text-2xl font-bold" style={{ color: '#F5F5DC' }}>
-            SK<span style={{ color: '#FF914D' }}>.</span>
+            SK<span style={{ color: '#D2691E' }}>.</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -51,11 +51,11 @@ const Header = () => {
                 onClick={() => scrollToSection(item.href)}
                 className="relative px-4 py-2 font-medium transition-all duration-300 group"
                 style={{ color: '#F5F5DC' }}
-                onMouseEnter={(e) => e.target.style.color = '#FF914D'}
-                onMouseLeave={(e) => e.target.style.color = '#F5F5DC'}
+                onMouseEnter={(e) => (e.target as HTMLElement).style.color = '#D2691E'}
+                onMouseLeave={(e) => (e.target as HTMLElement).style.color = '#F5F5DC'}
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" style={{ backgroundColor: '#FF914D' }}></span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" style={{ backgroundColor: '#D2691E' }}></span>
               </button>
             ))}
           </nav>
