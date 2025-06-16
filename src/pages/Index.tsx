@@ -9,10 +9,13 @@ import CertificationsSection from '@/components/CertificationsSection';
 import EducationSection from '@/components/EducationSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Index = () => {
+  const { theme } = useTheme();
+  
   return (
-    <div className="min-h-screen bg-white">
+    <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'}`}>
       <Header />
       <HeroSection />
       <AboutSection />

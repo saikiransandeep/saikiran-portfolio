@@ -1,10 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,13 +36,19 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-200' : 'bg-white/80 backdrop-blur-sm'
+      scrolled 
+        ? theme === 'dark' 
+          ? 'bg-gray-900/95 backdrop-blur-sm shadow-sm border-b border-gray-700' 
+          : 'bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-200'
+        : theme === 'dark'
+          ? 'bg-gray-900/80 backdrop-blur-sm'
+          : 'bg-white/80 backdrop-blur-sm'
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="text-2xl font-bold text-gray-900">
-            SK<span className="text-gray-600">.</span>
+          <div className={`text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            SK<span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>.</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -49,18 +57,36 @@ const Header = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="relative px-4 py-2 text-gray-600 font-medium transition-all duration-300 hover:text-gray-900 group"
+                className={`relative px-4 py-2 font-medium transition-all duration-300 group ${
+                  theme === 'dark' 
+                    ? 'text-gray-300 hover:text-white' 
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-900 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ${
+                  theme === 'dark' ? 'bg-white' : 'bg-gray-900'
+                }`}></span>
               </button>
             ))}
           </nav>
 
-          {/* Mobile Menu */}
-          <div className="flex items-center">
+          {/* Theme Toggle and Mobile Menu */}
+          <div className="flex items-center space-x-3">
             <button
-              className="md:hidden text-gray-900"
+              onClick={toggleTheme}
+              className={`p-2 rounded-lg transition-all duration-300 ${
+                theme === 'dark' 
+                  ? 'text-gray-300 hover:text-white hover:bg-gray-800' 
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+              }`}
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            
+            <button
+              className={`md:hidden ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -70,12 +96,20 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-sm rounded-lg mt-2 py-4 border border-gray-200 animate-fade-in">
+          <div className={`md:hidden backdrop-blur-sm rounded-lg mt-2 py-4 border animate-fade-in ${
+            theme === 'dark' 
+              ? 'bg-gray-900/95 border-gray-700' 
+              : 'bg-white/95 border-gray-200'
+          }`}>
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-6 py-3 text-gray-600 font-medium transition-all duration-300 hover:text-gray-900 hover:bg-gray-50"
+                className={`block w-full text-left px-6 py-3 font-medium transition-all duration-300 ${
+                  theme === 'dark' 
+                    ? 'text-gray-300 hover:text-white hover:bg-gray-800' 
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
               >
                 {item.name}
               </button>

@@ -6,8 +6,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const ContactSection = () => {
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -19,11 +21,9 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission (replace with your actual form handling)
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Here you would typically send the data to your backend or email service
       console.log('Form submitted:', formData);
       
       toast({
@@ -55,25 +55,25 @@ const ContactSection = () => {
       name: 'LinkedIn',
       icon: <Linkedin className="h-6 w-6" />,
       url: 'https://linkedin.com/in/sai-kiran-383474327',
-      color: 'hover:text-gray-700'
+      color: theme === 'dark' ? 'hover:text-blue-400' : 'hover:text-gray-700'
     },
     {
       name: 'GitHub',
       icon: <Github className="h-6 w-6" />,
       url: 'https://github.com/saikiransandeep',
-      color: 'hover:text-gray-700'
+      color: theme === 'dark' ? 'hover:text-purple-400' : 'hover:text-gray-700'
     },
     {
       name: 'LeetCode',
       icon: <Code className="h-6 w-6" />,
       url: 'https://leetcode.com/u/saikiransandeep',
-      color: 'hover:text-gray-700'
+      color: theme === 'dark' ? 'hover:text-yellow-400' : 'hover:text-gray-700'
     },
     {
       name: 'GeeksforGeeks',
       icon: <Users className="h-6 w-6" />,
       url: 'https://geeksforgeeks.org/user/saikirans8k6c',
-      color: 'hover:text-gray-700'
+      color: theme === 'dark' ? 'hover:text-green-400' : 'hover:text-gray-700'
     }
   ];
 
@@ -84,12 +84,22 @@ const ContactSection = () => {
   return (
     <>
       {isSubmitting && <LoadingSpinner />}
-      <section id="contact" className="py-20 bg-gray-50">
+      <section id="contact" className={
+        theme === 'dark' 
+          ? 'py-20 bg-gradient-to-br from-gray-800 to-gray-900' 
+          : 'py-20 bg-gray-50'
+      }>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
-            <div className="w-24 h-1 bg-gray-900 mx-auto rounded-full"></div>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            <h2 className={`text-4xl font-bold mb-4 ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>Get In Touch</h2>
+            <div className={`w-24 h-1 mx-auto rounded-full ${
+              theme === 'dark' ? 'bg-gradient-to-r from-blue-400 to-purple-400' : 'bg-gray-900'
+            }`}></div>
+            <p className={`mt-4 max-w-2xl mx-auto ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            }`}>
               Ready to collaborate or have a question? I'd love to hear from you. 
               Let's build something amazing together!
             </p>
@@ -99,18 +109,30 @@ const ContactSection = () => {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h3>
+                <h3 className={`text-2xl font-semibold mb-6 ${
+                  theme === 'dark' ? 'text-white' : 'text-gray-900'
+                }`}>Contact Information</h3>
                 
                 <div className="space-y-4">
                   <div className="flex items-center">
-                    <div className="bg-gray-100 p-3 rounded-lg mr-4">
-                      <Mail className="h-6 w-6 text-gray-600" />
+                    <div className={`p-3 rounded-lg mr-4 ${
+                      theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'
+                    }`}>
+                      <Mail className={`h-6 w-6 ${
+                        theme === 'dark' ? 'text-blue-400' : 'text-gray-600'
+                      }`} />
                     </div>
                     <div>
-                      <p className="text-gray-500 text-sm">Email</p>
+                      <p className={`text-sm ${
+                        theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                      }`}>Email</p>
                       <a 
                         href="mailto:saikiransandeep1@gmail.com"
-                        className="text-gray-900 hover:text-gray-700 transition-colors duration-300 font-medium"
+                        className={`font-medium transition-colors duration-300 ${
+                          theme === 'dark' 
+                            ? 'text-white hover:text-blue-400' 
+                            : 'text-gray-900 hover:text-gray-700'
+                        }`}
                       >
                         saikiransandeep1@gmail.com
                       </a>
@@ -118,14 +140,24 @@ const ContactSection = () => {
                   </div>
                   
                   <div className="flex items-center">
-                    <div className="bg-gray-100 p-3 rounded-lg mr-4">
-                      <Phone className="h-6 w-6 text-gray-600" />
+                    <div className={`p-3 rounded-lg mr-4 ${
+                      theme === 'dark' ? 'bg-gray-700' : 'bg-gray-100'
+                    }`}>
+                      <Phone className={`h-6 w-6 ${
+                        theme === 'dark' ? 'text-green-400' : 'text-gray-600'
+                      }`} />
                     </div>
                     <div>
-                      <p className="text-gray-500 text-sm">Phone</p>
+                      <p className={`text-sm ${
+                        theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                      }`}>Phone</p>
                       <a 
                         href="tel:+919398150899"
-                        className="text-gray-900 hover:text-gray-700 transition-colors duration-300 font-medium"
+                        className={`font-medium transition-colors duration-300 ${
+                          theme === 'dark' 
+                            ? 'text-white hover:text-green-400' 
+                            : 'text-gray-900 hover:text-gray-700'
+                        }`}
                       >
                         +91 93981 50899
                       </a>
@@ -135,13 +167,19 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <h4 className="text-xl font-semibold text-gray-900 mb-4">Connect With Me</h4>
+                <h4 className={`text-xl font-semibold mb-4 ${
+                  theme === 'dark' ? 'text-white' : 'text-gray-900'
+                }`}>Connect With Me</h4>
                 <div className="flex space-x-4">
                   {socialLinks.map((link, index) => (
                     <button
                       key={index}
                       onClick={() => handleSocialClick(link.url)}
-                      className={`bg-gray-100 p-3 rounded-lg text-gray-600 ${link.color} transition-all duration-300 hover:bg-gray-200`}
+                      className={`p-3 rounded-lg transition-all duration-300 transform hover:scale-110 ${
+                        theme === 'dark' 
+                          ? `bg-gray-700 text-gray-300 ${link.color} hover:bg-gray-600` 
+                          : `bg-gray-100 text-gray-600 ${link.color} hover:bg-gray-200`
+                      }`}
                       title={`Visit my ${link.name} profile`}
                     >
                       {link.icon}
@@ -152,8 +190,14 @@ const ContactSection = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white p-8 rounded-lg border border-gray-200 shadow-sm">
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6">Send Message</h3>
+            <div className={`p-8 rounded-lg border shadow-sm ${
+              theme === 'dark' 
+                ? 'bg-gray-800 border-gray-700' 
+                : 'bg-white border-gray-200'
+            }`}>
+              <h3 className={`text-2xl font-semibold mb-6 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>Send Message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -164,7 +208,11 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-gray-500 transition-all duration-300"
+                    className={
+                      theme === 'dark'
+                        ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400'
+                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-gray-500'
+                    }
                   />
                 </div>
                 
@@ -176,7 +224,11 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-gray-500 transition-all duration-300"
+                    className={
+                      theme === 'dark'
+                        ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400'
+                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-gray-500'
+                    }
                   />
                 </div>
                 
@@ -188,14 +240,22 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-gray-500 resize-none transition-all duration-300"
+                    className={`resize-none ${
+                      theme === 'dark'
+                        ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400'
+                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-gray-500'
+                    }`}
                   />
                 </div>
                 
                 <Button 
                   type="submit"
                   disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
-                  className="w-full bg-gray-900 hover:bg-gray-800 text-white py-3 rounded-lg transition-all duration-300 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className={`w-full py-3 rounded-lg font-medium transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+                    theme === 'dark'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white'
+                      : 'bg-gray-900 hover:bg-gray-800 text-white'
+                  }`}
                 >
                   {isSubmitting ? (
                     <>
