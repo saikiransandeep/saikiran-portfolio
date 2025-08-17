@@ -84,12 +84,12 @@ const ContactSection = () => {
   return (
     <>
       {isSubmitting && <LoadingSpinner />}
-      <section id="contact" className="py-20 bg-gray-800 dark:bg-gray-800 transition-all duration-300">
+      <section id="contact" className="py-20 bg-muted transition-all duration-300">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl font-bold text-white dark:text-white mb-4">Get In Touch</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto rounded-full"></div>
-            <p className="text-gray-300 dark:text-gray-300 mt-4 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold text-foreground mb-4">Get In Touch</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[hsl(var(--pastel-blue-foreground))] to-primary mx-auto rounded-full"></div>
+            <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
               Ready to collaborate or have a question? I'd love to hear from you. 
               Let's build something amazing together!
             </p>
@@ -99,18 +99,18 @@ const ContactSection = () => {
             {/* Contact Information */}
             <div className="space-y-8 animate-slide-in-left">
               <div>
-                <h3 className="text-2xl font-semibold text-white dark:text-white mb-6">Contact Information</h3>
+                <h3 className="text-2xl font-semibold text-foreground mb-6">Contact Information</h3>
                 
                 <div className="space-y-4">
                   <div className="flex items-center transition-all duration-300 hover:scale-105">
-                    <div className="bg-blue-600/20 p-3 rounded-lg mr-4">
-                      <Mail className="h-6 w-6 text-blue-400" />
+                    <div className="bg-[hsl(var(--pastel-blue))] p-3 rounded-lg mr-4">
+                      <Mail className="h-6 w-6 text-[hsl(var(--pastel-blue-foreground))]" />
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">Email</p>
+                      <p className="text-muted-foreground text-sm">Email</p>
                       <a 
                         href="mailto:saikiransandeep1@gmail.com"
-                        className="text-white hover:text-blue-400 transition-colors duration-300"
+                        className="text-foreground hover:text-[hsl(var(--pastel-blue-foreground))] transition-colors duration-300"
                       >
                         saikiransandeep1@gmail.com
                       </a>
@@ -118,14 +118,14 @@ const ContactSection = () => {
                   </div>
                   
                   <div className="flex items-center transition-all duration-300 hover:scale-105">
-                    <div className="bg-green-600/20 p-3 rounded-lg mr-4">
-                      <Phone className="h-6 w-6 text-green-400" />
+                    <div className="bg-muted p-3 rounded-lg mr-4">
+                      <Phone className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">Phone</p>
+                      <p className="text-muted-foreground text-sm">Phone</p>
                       <a 
                         href="tel:+919398150899"
-                        className="text-white hover:text-green-400 transition-colors duration-300"
+                        className="text-foreground hover:text-primary transition-colors duration-300"
                       >
                         +91 93981 50899
                       </a>
@@ -135,13 +135,14 @@ const ContactSection = () => {
               </div>
 
               <div>
-                <h4 className="text-xl font-semibold text-white dark:text-white mb-4">Connect With Me</h4>
+                <h4 className="text-xl font-semibold text-foreground mb-4">Connect With Me</h4>
                 <div className="flex space-x-4">
                   {socialLinks.map((link, index) => (
                     <button
                       key={index}
                       onClick={() => handleSocialClick(link.url)}
-                      className={`bg-gray-700 p-3 rounded-lg text-gray-400 ${link.color} transition-all duration-300 hover:scale-110 hover:shadow-lg`}
+                      className={`bg-card p-3 rounded-lg text-muted-foreground ${link.color} transition-all duration-300 hover:scale-110 border border-border`}
+                      style={{ boxShadow: 'var(--soft-shadow)' }}
                       title={`Visit my ${link.name} profile`}
                     >
                       {link.icon}
@@ -152,8 +153,8 @@ const ContactSection = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-gray-900/50 p-8 rounded-lg animate-slide-in-right">
-              <h3 className="text-2xl font-semibold text-white dark:text-white mb-6">Send Message</h3>
+            <div className="bg-card p-8 rounded-lg animate-slide-in-right border border-border" style={{ boxShadow: 'var(--card-shadow)' }}>
+              <h3 className="text-2xl font-semibold text-foreground mb-6">Send Message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -164,7 +165,7 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 transition-all duration-300"
+                    className="bg-background border-border text-foreground placeholder-muted-foreground focus:border-[hsl(var(--pastel-blue-foreground))] transition-all duration-300"
                   />
                 </div>
                 
@@ -176,7 +177,7 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 transition-all duration-300"
+                    className="bg-background border-border text-foreground placeholder-muted-foreground focus:border-[hsl(var(--pastel-blue-foreground))] transition-all duration-300"
                   />
                 </div>
                 
@@ -188,14 +189,15 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="bg-gray-800 border-gray-600 text-white placeholder-gray-400 focus:border-blue-400 resize-none transition-all duration-300"
+                    className="bg-background border-border text-foreground placeholder-muted-foreground focus:border-[hsl(var(--pastel-blue-foreground))] resize-none transition-all duration-300"
                   />
                 </div>
                 
                 <Button 
                   type="submit"
                   disabled={isSubmitting || !formData.name || !formData.email || !formData.message}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-all duration-300 hover:scale-105 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[hsl(var(--pastel-blue-foreground))] hover:bg-[hsl(var(--pastel-blue-foreground))]/90 text-white py-3 rounded-lg transition-all duration-300 hover:scale-105 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ boxShadow: 'var(--soft-shadow)' }}
                 >
                   {isSubmitting ? (
                     <>

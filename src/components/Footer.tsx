@@ -39,12 +39,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 dark:bg-gray-900 border-t border-gray-800 transition-all duration-300">
+    <footer className="bg-card border-t border-border transition-all duration-300" style={{ boxShadow: 'var(--soft-shadow)' }}>
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-center md:text-left mb-4 md:mb-0">
-            <p className="text-gray-400">
-              © 2025 <span className="text-white font-semibold">Sai Kiran</span>. All rights reserved.
+            <p className="text-muted-foreground">
+              © 2025 <span className="text-foreground font-semibold">Sai Kiran</span>. All rights reserved.
             </p>
           </div>
           
@@ -54,7 +54,7 @@ const Footer = () => {
                 <button
                   key={index}
                   onClick={() => handleSocialClick(link.url)}
-                  className={`text-gray-400 ${link.color} transition-all duration-300 hover:scale-110`}
+                  className={`text-muted-foreground ${link.color} transition-all duration-300 hover:scale-110`}
                   title={`Visit my ${link.name} profile`}
                 >
                   {link.icon}
@@ -64,7 +64,8 @@ const Footer = () => {
             
             <button
               onClick={scrollToTop}
-              className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
+              className="bg-[hsl(var(--pastel-blue-foreground))] hover:bg-[hsl(var(--pastel-blue-foreground))]/90 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
+              style={{ boxShadow: 'var(--soft-shadow)' }}
               title="Scroll to top"
             >
               <ArrowUp className="h-5 w-5" />

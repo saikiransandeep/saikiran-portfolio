@@ -63,11 +63,11 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-12 lg:py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden transition-all duration-300">
+    <section id="projects" className="py-12 lg:py-16 bg-background relative overflow-hidden transition-all duration-300">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-purple-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[hsl(var(--pastel-blue))] rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-[hsl(var(--medium-grey))] rounded-full blur-3xl opacity-30"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -75,13 +75,13 @@ const ProjectsSection = () => {
           {/* Header */}
           <div className="text-center mb-8 lg:mb-12 animate-fade-in">
             <h2 className="text-2xl lg:text-4xl font-bold mb-4">
-              <span className="text-white dark:text-white">Featured </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+              <span className="text-foreground">Featured </span>
+              <span className="text-[hsl(var(--pastel-blue-foreground))]">
                 Projects
               </span>
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 mx-auto rounded-full mb-4"></div>
-            <p className="text-gray-300 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed text-sm lg:text-base px-4">
+            <div className="w-20 h-1 bg-gradient-to-r from-[hsl(var(--pastel-blue-foreground))] to-primary mx-auto rounded-full mb-4"></div>
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed text-sm lg:text-base px-4">
               Showcasing innovative solutions built with cutting-edge technologies and modern development practices.
             </p>
           </div>
@@ -91,29 +91,30 @@ const ProjectsSection = () => {
             {projects.map((project, index) => (
               <Card 
                 key={index}
-                className="group bg-gray-800/50 dark:bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-white/5 overflow-hidden animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="group bg-card border border-border backdrop-blur-sm hover:scale-[1.02] transition-all duration-500 overflow-hidden animate-scale-in"
+                style={{ 
+                  animationDelay: `${index * 0.1}s`,
+                  boxShadow: 'var(--soft-shadow)'
+                }}
               >
                 <CardContent className="p-0">
                   {/* Project Header */}
-                  <div className={`relative bg-gradient-to-br ${project.gradient} p-4 lg:p-5`}>
-                    <div className="absolute inset-0 bg-black/20"></div>
-                    
-                    <div className="relative z-10 flex justify-between items-start mb-3">
-                      <span className="px-3 py-1 bg-white/90 text-gray-800 text-xs font-semibold rounded-full shadow-sm">
+                  <div className="relative bg-gradient-to-br from-[hsl(var(--pastel-blue))]/30 to-[hsl(var(--medium-grey))]/20 p-4 lg:p-5 border-b border-border">
+                    <div className="flex justify-between items-start mb-3">
+                      <span className="px-3 py-1 bg-background text-foreground text-xs font-semibold rounded-full border border-border" style={{ boxShadow: 'var(--soft-shadow)' }}>
                         {project.category}
                       </span>
-                      <div className="flex items-center text-white/90 text-xs">
+                      <div className="flex items-center text-muted-foreground text-xs">
                         <Calendar className="h-3 w-3 mr-1" />
                         <span>{project.year}</span>
                       </div>
                     </div>
 
-                    <div className="relative z-10">
-                      <h3 className="text-xl lg:text-2xl font-bold text-white mb-1 leading-tight">
+                    <div>
+                      <h3 className="text-xl lg:text-2xl font-bold text-foreground mb-1 leading-tight">
                         {project.title}
                       </h3>
-                      <div className="flex items-center text-white/80 text-xs">
+                      <div className="flex items-center text-muted-foreground text-xs">
                         <User className="h-3 w-3 mr-1" />
                         <span>Solo Developer</span>
                       </div>
@@ -122,20 +123,20 @@ const ProjectsSection = () => {
 
                   {/* Project Content */}
                   <div className="p-4 lg:p-5">
-                    <p className="text-gray-300 dark:text-gray-300 leading-relaxed mb-4 text-sm lg:text-base line-clamp-3">
+                    <p className="text-muted-foreground leading-relaxed mb-4 text-sm lg:text-base line-clamp-3">
                       {project.description}
                     </p>
 
                     {/* Tech Stack */}
                     <div className="mb-4">
-                      <h4 className="text-xs font-medium text-gray-400 mb-2 uppercase tracking-wider">
+                      <h4 className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wider">
                         Tech Stack
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {project.techStack.map((tech, techIndex) => (
                           <span 
                             key={techIndex} 
-                            className="px-2 py-1 bg-gray-700/80 text-blue-300 text-xs font-medium rounded border border-gray-600/50 hover:border-blue-400/50 transition-all duration-300"
+                            className="px-2 py-1 bg-muted text-[hsl(var(--pastel-blue-foreground))] text-xs font-medium rounded border border-border hover:border-[hsl(var(--pastel-blue-foreground))]/50 transition-all duration-300"
                           >
                             {tech}
                           </span>
@@ -148,7 +149,7 @@ const ProjectsSection = () => {
                       <Button 
                         variant="outline" 
                         size="sm"
-                        className="flex-1 bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200 hover:text-gray-800 transition-all duration-300 text-xs lg:text-sm hover:scale-105"
+                        className="flex-1 bg-background border-border text-foreground hover:bg-muted transition-all duration-300 text-xs lg:text-sm hover:scale-105"
                         onClick={() => handleLinkClick(project.githubUrl)}
                       >
                         <Github className="mr-1 h-3 w-3 lg:h-4 lg:w-4" />
@@ -157,7 +158,7 @@ const ProjectsSection = () => {
                       <Button 
                         variant="outline" 
                         size="sm"
-                        className="flex-1 bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:text-blue-800 transition-all duration-300 text-xs lg:text-sm hover:scale-105"
+                        className="flex-1 bg-[hsl(var(--pastel-blue))]/20 border-[hsl(var(--pastel-blue-foreground))]/30 text-[hsl(var(--pastel-blue-foreground))] hover:bg-[hsl(var(--pastel-blue))]/30 transition-all duration-300 text-xs lg:text-sm hover:scale-105"
                         onClick={() => handleLinkClick(project.demoUrl)}
                       >
                         <ExternalLink className="mr-1 h-3 w-3 lg:h-4 lg:w-4" />
@@ -172,14 +173,14 @@ const ProjectsSection = () => {
 
           {/* Bottom CTA Section */}
           <div className="text-center animate-fade-in">
-            <div className="inline-block p-4 lg:p-6 bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-xl border border-gray-600/30 backdrop-blur-sm mx-4">
-              <h3 className="text-lg lg:text-xl font-bold text-white dark:text-white mb-2">Interested in My Work?</h3>
-              <p className="text-gray-300 dark:text-gray-300 mb-4 max-w-md mx-auto text-sm lg:text-base">
+            <div className="inline-block p-4 lg:p-6 bg-card rounded-xl border border-border backdrop-blur-sm mx-4" style={{ boxShadow: 'var(--card-shadow)' }}>
+              <h3 className="text-lg lg:text-xl font-bold text-foreground mb-2">Interested in My Work?</h3>
+              <p className="text-muted-foreground mb-4 max-w-md mx-auto text-sm lg:text-base">
                 Explore more projects on GitHub or get in touch to discuss potential collaborations.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button 
-                  className="bg-gray-100 hover:bg-gray-200 text-gray-800 hover:text-gray-900 px-4 lg:px-6 py-2 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base hover:scale-105"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 lg:px-6 py-2 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base hover:scale-105"
                   onClick={() => handleLinkClick("https://github.com/yourusername")} // Replace with your GitHub profile
                 >
                   <Github className="mr-2 h-4 w-4" />
@@ -187,7 +188,7 @@ const ProjectsSection = () => {
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:text-blue-800 hover:border-blue-300 px-4 lg:px-6 py-2 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base hover:scale-105"
+                  className="bg-[hsl(var(--pastel-blue))]/20 border-[hsl(var(--pastel-blue-foreground))]/30 text-[hsl(var(--pastel-blue-foreground))] hover:bg-[hsl(var(--pastel-blue))]/30 px-4 lg:px-6 py-2 rounded-lg font-medium transition-all duration-300 text-sm lg:text-base hover:scale-105"
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   Get In Touch

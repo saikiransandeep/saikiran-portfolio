@@ -24,13 +24,14 @@ const HeroSection = () => {
   return (
     <>
       {isDownloading && <LoadingSpinner />}
-      <section id="home" className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 transition-all duration-300">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section id="home" className="min-h-screen flex items-center justify-center relative bg-background">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--pastel-blue))] via-background to-[hsl(var(--light-grey))] opacity-30"></div>
         
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-[hsl(var(--pastel-blue))] rounded-full blur-3xl animate-pulse opacity-20"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[hsl(var(--medium-grey))] rounded-full blur-3xl animate-pulse delay-1000 opacity-20"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -38,21 +39,21 @@ const HeroSection = () => {
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               {/* Left Column - Content */}
               <div className="text-center lg:text-left space-y-6 animate-fade-in">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                  Sai <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Kiran</span>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+                  Sai <span className="text-[hsl(var(--pastel-blue-foreground))]">Kiran</span>
                 </h1>
                 
-                <h2 className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
+                <h2 className="text-lg sm:text-xl lg:text-2xl text-muted-foreground leading-relaxed">
                   Computer Science Student | Programming Enthusiast | AI Explorer
                 </h2>
                 
-                <div className="text-gray-400 space-y-4 max-w-2xl mx-auto lg:mx-0">
+                <div className="text-muted-foreground space-y-4 max-w-2xl mx-auto lg:mx-0">
                   {/* Full content for desktop */}
                   <div className="hidden md:block">
                     <p className="text-base lg:text-lg leading-relaxed">
                       Passionate about crafting innovative solutions through code. Currently mastering 
-                      <span className="text-blue-400 font-medium"> React, Node.js, and Firebase</span> while exploring the 
-                      fascinating world of <span className="text-purple-400 font-medium">artificial intelligence</span>.
+                      <span className="text-[hsl(var(--pastel-blue-foreground))] font-medium"> React, Node.js, and Firebase</span> while exploring the 
+                      fascinating world of <span className="text-primary font-medium">artificial intelligence</span>.
                     </p>
                     
                     <p className="text-sm lg:text-base leading-relaxed">
@@ -60,7 +61,7 @@ const HeroSection = () => {
                       bridge traditional programming with cutting-edge technology.
                     </p>
                     
-                    <p className="text-sm text-gray-500 italic">
+                    <p className="text-sm text-muted-foreground/70 italic">
                       "Transforming ideas into reality through the power of programming"
                     </p>
                   </div>
@@ -69,11 +70,11 @@ const HeroSection = () => {
                   <div className="md:hidden">
                     <p className="text-base leading-relaxed">
                       Passionate about creating innovative solutions with 
-                      <span className="text-blue-400 font-medium"> React, Node.js</span> and exploring 
-                      <span className="text-purple-400 font-medium"> AI</span>.
+                      <span className="text-[hsl(var(--pastel-blue-foreground))] font-medium"> React, Node.js</span> and exploring 
+                      <span className="text-primary font-medium"> AI</span>.
                     </p>
                     
-                    <p className="text-sm text-gray-500 italic">
+                    <p className="text-sm text-muted-foreground/70 italic">
                       "Building the future through code"
                     </p>
                   </div>
@@ -82,7 +83,8 @@ const HeroSection = () => {
                 <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start pt-4">
                   <Button 
                     size="lg" 
-                    className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+                    className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                    style={{ boxShadow: 'var(--soft-shadow)' }}
                     onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                   >
                     <ExternalLink className="mr-2 h-5 w-5" />
@@ -92,7 +94,8 @@ const HeroSection = () => {
                   <Button 
                     variant="outline" 
                     size="lg"
-                    className="w-full sm:w-auto bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:text-blue-800 hover:border-blue-300 px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+                    className="w-full sm:w-auto bg-background border-border text-foreground hover:bg-muted px-8 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                    style={{ boxShadow: 'var(--soft-shadow)' }}
                     onClick={handleResumeDownload}
                     disabled={isDownloading}
                   >
@@ -119,7 +122,7 @@ const HeroSection = () => {
         </div>
 
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronDown className="text-white/60 h-8 w-8" />
+          <ChevronDown className="text-muted-foreground/60 h-8 w-8" />
         </div>
       </section>
     </>
